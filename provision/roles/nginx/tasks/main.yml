@@ -1,0 +1,22 @@
+---
+- name: install epel
+  yum:
+    name: epel-release
+    state: present
+
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: nginx config
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
